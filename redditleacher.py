@@ -61,5 +61,57 @@ if __name__ == "__main__":
         "enter the subreddit you want to get your post from r/"
     )  # gets subreddit from user
 
+    number_of_posts = int(
+        input("enter the number of posts you want to make :")
+    )  # gets number of posts to be make
+
+    Tags = input("paste in the #tags in here you want on your posts with #")
+
+
+    root = make_download_folder()
+
+    # downloading images
+
+    i = 0
+    arr = ["jpg"]
+    for submission in reddit.subreddit(substr).hot(limit=number_of_posts):
+        url = submission.url
+        response = requests.get(url)
+        ext = str(url[-3:])
+        if ext in arr:
+            i += 1
+            with open('captions.txt',"a") as f:
+                f.write(str(submission.title)+"\n")
+            f.close()
+            with open("{}".format(i) + ".{}".format("jpg"), "wb") as f:
+                f.write(response.content)
+            print("download {} completed!".format(i))
+            time.sleep(2)
+
+    for img in os.listdir():
+        try:
+            image = Image.open(img)
+            print(image.size)
+            resized_image = image.resize((1080,1080))
+            resized_image.save('{}'.format(img))
+        except:
+            pass
+    
+    #posting of the images starts here
+    with open("captions.txt","r") as f:
+        captions = f.readlines()
+    print(captions)
+    i=1
+    while i <= len(captions):
+        try:
+          caps = captions[i]+ Tags
+          bot.upload_photo("{}.jpg".format(i+1),caps)
+        except:
+          i +=1
+          caps = captions[i]+ Tags
+          bot.upload_photo("{}.jpg".format(i+1) , caps)
+        i += 1
+        if i+1 != number_of_posts:
+            time.sleep(random.randrange(3600,7200))
     
 
