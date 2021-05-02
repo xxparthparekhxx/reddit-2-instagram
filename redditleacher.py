@@ -31,4 +31,18 @@ def getcredentials():
             credentials = json.load(f)
         return credentials
 
+def make_download_folder():
+    root = os.getcwd()
+
+    if "downloadsdir" not in os.listdir():
+        downloads = os.getcwd()+"\\downloadsdir"
+        os.mkdir(downloads)
+    elif "downloadsdir" in os.listdir():
+        os.chdir("downloadsdir")
+        for ele in os.listdir():
+            os.remove(ele)
+    return root
+        
+    
+
 
