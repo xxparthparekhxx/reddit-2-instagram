@@ -17,10 +17,10 @@ def getcredentials():
     if "creds.json" not in os.listdir():
         print("First time setup! \n enter your credentials below")
         credentials = {
-            "Reddit_client_id": input("enter your reddit_client_id"),
-            "Reddit_client_secret": input("enter your reddit client secret"),
-            "Instagram_id": input("enter your Insragram id #locally stored"),
-            "Instagam_password": input("enter your Instagram password"),
+            "Reddit_client_id": input("enter your reddit_client_id :"),
+            "Reddit_client_secret": input("enter your reddit client secret :"),
+            "Instagram_id": input("enter your Insragram id #locally stored :"),
+            "Instagam_password": input("enter your Instagram password :"),
         }
         with open("creds.json", "w") as f:
             json.dump(credentials, f)
@@ -65,7 +65,7 @@ if __name__ == "__main__":
         input("enter the number of posts you want to make :")
     )  # gets number of posts to be make
 
-    Tags = input("paste in the #tags in here you want on your posts with #")
+    Tags = input("paste in the #tags in here you want on your posts with :")
 
 
     root = make_download_folder()
