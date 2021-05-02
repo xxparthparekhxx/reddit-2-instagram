@@ -9,7 +9,7 @@ pip install instabot
 ```
 
 instructions:
-get reddit api client_id :
+get reddit api credentials:
 
   Create a Reddit account.
   The username of the reddit account will go to the username field.
