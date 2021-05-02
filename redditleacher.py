@@ -43,6 +43,23 @@ def make_download_folder():
             os.remove(ele)
     return root
         
-    
+if __name__ == "__main__":
 
+    credentials = getcredentials()
+
+    reddit = reddit_initializer(
+        credentials.get("Reddit_client_id"), credentials.get("Reddit_client_secret")
+    )
+
+    bot = Bot() # insragram logging in
+    bot.login(
+        username=credentials.get("Instagram_id"),
+        password=credentials.get("Instagam_password"),
+    )
+
+    substr = input(
+        "enter the subreddit you want to get your post from r/"
+    )  # gets subreddit from user
+
+    
 
