@@ -18,6 +18,6 @@ get reddit api client_id :
   client_id and client_secret are needed to access Reddit’s API as a script application. We can find them by:
 
     Login to your Reddit account.
-    Open the link: https://www.reddit.com/prefs/app
+    Open the link: https://www.reddit.com/prefs/apps
     
    
